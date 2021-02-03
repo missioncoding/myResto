@@ -1,0 +1,41 @@
+<!Doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout :: site-head">
+</head>
+<body>
+<header th:replace="layout :: createcustomer"/>
+<header th:replace="layout :: home"/>
+<h1>All Customers</h1>
+
+<table style="width:100%">
+    <tr>
+        <th>Fullname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Building No</th>
+        <th>Street</th>
+        <th>District</th>
+        <th>DoorBell</th>
+        <th>Pincode</th>
+    </tr>
+    <zee-main id="customers">
+        <post th:each="c: ${customers}">
+            <tr>
+                <td th:text="${c.fullname}" />
+                <td th:text="${c.email}" />
+                <td th:text="${c.phone}" />
+                <td th:text="${c.buildingno}" />
+                <td th:text="${c.street}" />
+                <td th:text="${c.district}" />
+                <td th:text="${c.doorbell}" />
+                <td th:text="${c.pincode}" />
+                <td>
+                    <button th:data-parameter1="${c.id}" th:onclick="del(this.getAttribute('data-parameter1'))">delete</button>
+                    <button th:data-parameter1="${c.id}" th:onclick="update(this.getAttribute('data-parameter1'))">update</button>
+                </td>
+            </tr>
+        </post>
+    </zee-main>
+</table>
+</body>
+</html>

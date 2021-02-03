@@ -1,0 +1,27 @@
+<!Doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="layout :: site-head">
+    <title> myResto - Create customer</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+
+<body>
+<div align="center">
+    <h1> Customer Details :</h1>
+    <form action="#" th:action="@{/myresto/customer}" th:object="${customer}" method="post" enctype='application/json'>
+        <input type="hidden" name="id" id="id" th:field="*{id}"/>
+        <label for="fullname">Fullname :</label><input type="text" name="fullname" id="fullname" th:field="*{fullname}" required/> <br/>
+        <label for="email">Email : </label><input type="text" name="email" id="email" th:field="*{email}" required/><br/>
+        <label for="phone">Phone : </label><input type="text" name="phone" id="phone" th:field="*{phone}" required/><br/>
+        <h3>Address: </h3></br>
+        <label for="buildingno">Building No : </label><input type="text" name="buildingno" id="buildingno" th:field="*{buildingno}" required/><br/>
+        <label for="street">Street : </label><input type="text" name="street" id="street" th:field="*{street}" required /><br/>
+        <label for="district">District : </label><input type="text" name="district" id="district" th:field="*{district}" required/><br/>
+        <label for="doorbell">Door Bell : </label><input type="text" name="doorbell" id="doorbell" th:field="*{doorbell}" required /><br/>
+        <label for="pincode">Pincode : </label><input type="text" name="pincode" id="pincode" th:field="*{pincode}" required/><br/>
+        <br/>
+        <input type="submit" value="OK"/>
+    </form>
+</div>
+</body>
+</html>

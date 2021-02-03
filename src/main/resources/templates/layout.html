@@ -1,0 +1,76 @@
+<!Doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:fragment="site-head">
+    <title>myResto</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 200px;
+            margin: 5px;
+            text-align: left;
+        }
+        input[type=text], input[type=password], select {
+            display: inline-block;
+            width: 200px;
+        }
+        input[type=radio] {
+            margin-left: 45px;
+        }
+        input[type=checkbox] {
+            margin-right: 190px;
+        }
+        button {
+            padding: 5px;
+            margin: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+        table {
+            border-spacing: 15px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function del(id) {
+            $.ajax({
+                url: '/myresto/' + id,
+                type: 'DELETE',
+                success: function(result) {
+                    alert("successfully deleted");
+                    location.reload();
+                }
+            });
+        }
+
+        function update (id) {
+            $.ajax({
+                url: '/myresto/updatecustomer/' + id,
+                type: 'GET',
+                success: function(result,txtStatus) {
+                    $("html").html(result);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<header th:fragment="createcustomer" th:remove="tag">
+    <header>
+        <a href="createcustomer.html" th:href="@{/myresto/customer}">Create Customer</a>
+    </header>
+</header>
+
+<header th:fragment="home" th:remove="tag">
+    <header>
+        <a href="index.html" th:href="@{/}">Home</a>
+    </header>
+</header>
+
+</body>
+</html>
